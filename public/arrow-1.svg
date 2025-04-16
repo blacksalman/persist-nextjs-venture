@@ -1,0 +1,14 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Curved Arrow with Loop (Upside Direction) -->
+  <path d="M50 150 
+           Q120 110 100 70 
+           Q80 30 170 50 
+           Q260 70 270 40" 
+        stroke="lightgray" 
+        fill="none" 
+        stroke-width="4" 
+        stroke-linecap="round"/>
+
+  <!-- Arrowhead (Pointing Up) -->
+  <polygon points="274,40 250,40 270, 62" fill="lightgray"/>
+</svg>
