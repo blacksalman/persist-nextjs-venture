@@ -1,13 +1,11 @@
 // app/signup/page.jsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
-import Footer from '../footer/page';
-import Navbar from '../components/Navbar';
 
-const SignupPage = () => {
+const SignupContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -214,6 +212,14 @@ const SignupPage = () => {
       </div>
       {/* <Footer /> */}
     </div>
+  );
+};
+
+const SignupPage = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-white">Loading...</div>}>
+      <SignupContent />
+    </Suspense>
   );
 };
 
