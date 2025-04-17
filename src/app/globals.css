@@ -210,3 +210,10 @@ html {
   opacity: 0.5;
   z-index: 0;
 }
+
+
+@media (max-width: 767px) {
+  #about {
+    margin-left: 68px; 
+  }
+}

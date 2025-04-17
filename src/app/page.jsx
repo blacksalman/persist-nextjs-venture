@@ -23,7 +23,10 @@ export default function Home() {
         <JobsSection/>
         <TestimonialsSection/>
         <FaqSection/>
-        <HelpSection/>
+        <HelpSection/> 
+        {/* 
+        */}
+        
       </main>
       <Footer />
     </div>
