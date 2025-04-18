@@ -339,7 +339,7 @@ const EligibilityBox = () => {
             className={`p-2 md:p-[15px_25px] rounded-[40px] md:rounded-[100px] bg-[rgba(0,0,0,0.4)] border border-[rgba(255,255,255,0.1)] text-white text-[0.8rem] md:text-base shadow-[0_3px_10px_rgba(0,0,0,0.2)] md:shadow-[0_4px_15px_rgba(0,0,0,0.2)] w-full outline-none placeholder:text-[rgba(255,255,255,0.5)] placeholder:text-[0.7rem] md:placeholder:text-[0.95rem] ${error ? 'border-[#ff4d4d]' : ''}`}
           />
           <button
-            className={`bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] p-2 md:p-[15px_32px] rounded-[40px] md:rounded-[100px] text-white font-medium text-[0.7rem] md:text-[0.95rem] shadow-[0_3px_10px_rgba(124,58,237,0.2)] md:shadow-[0_4px_15px_rgba(124,58,237,0.2)] transition-all duration-300 hover:-translate-y-[1px] md:hover:-translate-y-[2px] hover:shadow-[0_4px_15px_rgba(124,58,237,0.3)] md:hover:shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:bg-gradient-to-r hover:from-[#9461ff] hover:to-[#8b5cf6] disabled:bg-[#555] disabled:cursor-not-allowed w-24 md:w-auto`}
+            className={`bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] p-2 md:p-[15px_32px] rounded-[40px] md:rounded-[100px] text-white font-medium text-[0.7rem] md:text-[0.95rem] shadow-[0_3px_10px_rgba(124,58,237,0.2)] md:shadow-[0_4px_15px_rgba(124,58,237,0.2)] transition-all duration-300 hover:-translate-y-[1px] md:hover:-translate-y-[2px] hover:shadow-[0_4px_15px_rgba(124,58,237,0.3)] md:hover:shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:bg-gradient-to-r hover:from-[#9461ff] hover:to-[#8b5cf6] disabled:bg-[#555] disabled:cursor-not-allowed  md:w-auto`} style={{ width: '35%' }}
             onClick={handleSubmit}
             disabled={isChecking}
           >
