@@ -94,19 +94,19 @@
 //             disabled={isChecking}
 //             className={`p-[15px_25px] rounded-[100px] bg-[rgba(0,0,0,0.4)] border border-[rgba(255,255,255,0.1)] text-white text-base shadow-[0_4px_15px_rgba(0,0,0,0.2)] flex-1 outline-none placeholder:text-[rgba(255,255,255,0.5)] placeholder:text-[0.95rem] ${error ? 'border-[#ff4d4d]' : ''}`}
 //           />
-//           <button
-//             className={`bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] p-[15px_32px] rounded-[100px] text-white font-medium text-[0.95rem] shadow-[0_4px_15px_rgba(124,58,237,0.2)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:bg-gradient-to-r hover:from-[#9461ff] hover:to-[#8b5cf6] disabled:bg-[#555] disabled:cursor-not-allowed`}
-//             onClick={handleSubmit}
-//             disabled={isChecking}
-//           >
-//             {isChecking ? (
-//               <span>
-//                 Checking<span className="animate-[dots_1.5s_infinite] after:content-['.'] after:[animation:inherit] after:[animation-delay:0.2s]"></span>
-//               </span>
-//             ) : (
-//               'Check Now'
-//             )}
-//           </button>
+          // <button
+          //   className={`bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] p-[15px_32px] rounded-[100px] text-white font-medium text-[0.95rem] shadow-[0_4px_15px_rgba(124,58,237,0.2)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(124,58,237,0.3)] hover:bg-gradient-to-r hover:from-[#9461ff] hover:to-[#8b5cf6] disabled:bg-[#555] disabled:cursor-not-allowed`}
+          //   onClick={handleSubmit}
+          //   disabled={isChecking}
+          // >
+          //   {isChecking ? (
+          //     <span>
+          //       Checking<span className="animate-[dots_1.5s_infinite] after:content-['.'] after:[animation:inherit] after:[animation-delay:0.2s]"></span>
+          //     </span>
+          //   ) : (
+          //     'Check Now'
+          //   )}
+          // </button>
 //         </div>
 //         {error && <p className="text-[#ff4d4d] text-[0.9rem] mt-[10px] text-center">{error}</p>}
 //       </div>
@@ -351,6 +351,7 @@ const EligibilityBox = () => {
               'Check Now'
             )}
           </button>
+             
         </div>
         {error && <p className="text-[#ff4d4d] text-[1rem] md:text-[0.9rem] mt-1 md:mt-[10px] text-center">{error}</p>}
       </div>

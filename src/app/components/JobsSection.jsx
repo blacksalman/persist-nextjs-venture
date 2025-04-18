@@ -191,10 +191,12 @@ const JobsSection = () => {
 
     const positions = isBelow ? positionsBelow : positionsAbove;
 
+
     return (
+      <>
       <div
         key={job.id}
-        className="bg-[rgba(20,20,30,0.9)] border border-white/15 rounded-2xl p-6 text-left backdrop-blur-md shadow-2xl transition-all duration-300 ease-in-out h-[350px] w-[300px] absolute"
+        className="bg-[rgba(20,20,30,0.9)] border border-white/15 rounded-2xl p-6 text-left backdrop-blur-md shadow-2xl transition-all duration-300 ease-in-out h-[350px] w-[300px] absolute hidden md:block"
         style={{
           top: positions[index]?.top || "225px",
           height: positions[index]?.height || "350px",
@@ -237,10 +239,80 @@ const JobsSection = () => {
           </Link>
         </div>
       </div>
+      </>
+    );
+  };
+
+  const renderJobCardMobile = (job, index, isBelow = false) => {
+
+    const positionsAboveMobile = [
+      // { top: "79px", left: "280px" },
+      { top: "-9px", left: "-126px", height: "359px" },
+      // { top: "-10px", left: "245px" },
+    ];
+
+    const positionsBelowMobile = [
+      // { top: "80px", left: "150px" },
+      { top: "-12px", left: "-123px", height: "371px" },
+      // { top: "-14px", left: "120px" },
+    ];
+
+
+    const positionsMobile = isBelow ? positionsAboveMobile : positionsBelowMobile;
+
+    return (
+      <>
+      <div
+        key={job.id}
+        className="bg-[rgba(20,20,30,0.9)] border border-white/15 rounded-2xl p-6 text-left backdrop-blur-md shadow-2xl transition-all duration-300 ease-in-out h-[350px] w-[300px] absolute md:hidden"
+        style={{
+          top: positionsMobile[index]?.top || "225px",
+          height: positionsMobile[index]?.height || "350px",
+          left: positionsMobile[index]?.left || "275px",
+          zIndex: 3 - index,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = `scale(1.05)`;
+          e.currentTarget.style.zIndex = 20;
+          e.currentTarget.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.5)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = `scale(1)`;
+          e.currentTarget.style.zIndex = 3 - index;
+          e.currentTarget.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.3)";
+        }}
+      >
+        <div className="flex flex-col h-full justify-between">
+          <div>
+            <div className="flex justify-between items-start mb-4">
+              <span className="text-white/60 text-xs">Job</span>
+              <span className="text-white/60 text-xs">{job.type}</span>
+            </div>
+            <h4 className="text-white text-2xl font-bold mb-2">{job.role}</h4>
+            <p className="text-violet-400 text-base mb-4">{job.company}</p>
+          </div>
+          <div className="flex flex-wrap gap-3 mb-6 text-white/70 text-sm">
+            <span className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+              <FaDollarSign className="text-violet-400 text-base" /> {job.salary}
+            </span>
+            <span className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+              <FaGlobe className="text-violet-400 text-base" /> {job.location}
+            </span>
+          </div>
+          <Link
+            href={`/jobs/${job.id}`}
+            className="inline-block bg-violet-600 hover:bg-violet-700 text-white text-base font-medium px-6 py-2 rounded-lg transition w-full text-center"
+          >
+            View Details
+          </Link>
+        </div>
+      </div>
+      </>
     );
   };
 
   return (
+    <>
     <section className="py-20 px-10 text-center text-white hidden md:block" id="jobs">
       <h2 className="text-4xl font-light mb-5">Get Hired or Hire Top Talent—Fast!</h2>
       <p className="text-white/70 text-lg mb-10">
@@ -296,6 +368,99 @@ const JobsSection = () => {
         </div>
       </div>
     </section>
+
+     {/* Mobile Section (visible on mobile, hidden on desktop) */}
+{/* <section className="py-12 px-4 text-center text-white md:hidden" id="jobs-mobile">
+  <h2 className="text-3xl font-light mb-4">Get Hired or Hire Top Talent—Fast!</h2>
+  <p className="text-white/70 text-base mb-8">
+    Accelerate your career or hire top developers with ease!
+  </p>
+
+  <div className="flex flex-col gap-8 max-w-screen-xl mx-auto mb-10 items-center relative" style={{ minHeight: "450px" }}>
+    <div className="relative max-w-[300px] h-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 text-left flex flex-col justify-center backdrop-blur z-10 shadow-[6.95px_6.95px_2.6px_rgb(150,146,146)] mx-auto">
+      <h3 className="text-white text-lg font-medium mb-2">Land Your Dream Job! 🚀</h3>
+      <p className="text-white/70 text-sm mb-4">
+        Explore 10,000+ high-paying tech jobs and get hired faster with our Career Accelerator.
+      </p>
+      <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-violet-600 transition w-fit">
+        Explore Now
+      </button>
+    </div>
+
+    <div className="relative max-w-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur shadow-inner shadow-[inset_0_0_7px_5px_#9293ec2e] flex items-center justify-center" style={{ minHeight: "350px" }}>
+      <div className="flex flex-col items-center">
+        {jobsLeftColumn1.slice(0, 1).map((job, index) => renderJobCard(job, index % 3, false))}
+      </div>
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-8 max-w-screen-xl mx-auto items-center relative" id="hire-mobile" style={{ minHeight: "450px" }}>
+    <div className="relative max-w-[300px] h-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 text-left flex flex-col justify-center backdrop-blur z-10 shadow-[6.95px_6.95px_2.6px_rgb(150,146,146)] mx-auto">
+      <h3 className="text-white text-lg font-medium mb-2">
+        Hire Top<br /> Developers Fast! 🚀
+      </h3>
+      <p className="text-white/70 text-sm mb-4">
+        Access job-ready tech talent and fill<br /> role effortlessly.
+      </p>
+      <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-violet-600 transition w-fit">
+        Start Posting
+      </button>
+    </div>
+
+    <div className="relative max-w-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur shadow-inner shadow-[inset_0_0_7px_5px_#9293ec2e] flex items-center justify-center" style={{ minHeight: "350px" }}>
+      <div className="flex flex-col items-center">
+        {jobsLeftColumn2.slice(0, 1).map((job, index) => renderJobCard(job, index % 3, true))}
+      </div>
+    </div>
+  </div>
+</section> */}
+
+{/* Mobile Section (visible on mobile, hidden on desktop) */}
+<section className="py-12 px-4 text-center text-white md:hidden" id="jobs-mobile">
+  <h2 className="text-3xl font-light mb-4">Get Hired or Hire Top Talent—Fast!</h2>
+  <p className="text-white/70 text-base mb-8">
+    Accelerate your career or hire top developers with ease!
+  </p>
+
+  <div className="flex flex-col gap-8 max-w-screen-xl mx-auto mb-10 items-center relative" style={{ minHeight: "450px" }}>
+    <div className="relative max-w-[300px] h-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 text-left flex flex-col justify-center backdrop-blur z-10 shadow-[6.95px_6.95px_2.6px_rgb(150,146,146)] mx-auto">
+      <h3 className="text-white text-lg font-medium mb-2">Land Your Dream Job! 🚀</h3>
+      <p className="text-white/70 text-sm mb-4">
+        Explore 10,000+ high-paying tech jobs and get hired faster with our Career Accelerator.
+      </p>
+      <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-violet-600 transition w-fit">
+        Explore Now
+      </button>
+    </div>
+
+    <div className="relative max-w-[300px] border border-white/10 rounded-2xl p-5 flex justify-center" style={{ minHeight: "350px" }}>
+      <div className="flex flex-col items-center">
+        {jobsLeftColumn1.slice(0, 1).map((job, index) => renderJobCardMobile(job, index % 3, false))}
+      </div>
+    </div>
+  </div>
+
+  <div className="flex flex-col gap-8 max-w-screen-xl mx-auto items-center relative" id="hire-mobile" style={{ minHeight: "450px" }}>
+    <div className="relative max-w-[300px] h-[300px] bg-white/5 border border-white/10 rounded-2xl p-5 text-left flex flex-col justify-center backdrop-blur z-10 shadow-[6.95px_6.95px_2.6px_rgb(150,146,146)] mx-auto">
+      <h3 className="text-white text-lg font-medium mb-2">
+        Hire Top<br /> Developers Fast! 🚀
+      </h3>
+      <p className="text-white/70 text-sm mb-4">
+        Access job-ready tech talent and fill<br /> role effortlessly.
+      </p>
+      <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-violet-600 transition w-fit">
+        Start Posting
+      </button>
+    </div>
+
+    <div className="relative max-w-[300px] border border-white/10 rounded-2xl p-5 flex justify-center" style={{ minHeight: "350px" }}>
+      <div className="flex flex-col items-center">
+        {jobsLeftColumn2.slice(0, 1).map((job, index) => renderJobCardMobile(job, index % 3, true))}
+      </div>
+    </div>
+  </div>
+</section>
+    </>
   );
 };
 
